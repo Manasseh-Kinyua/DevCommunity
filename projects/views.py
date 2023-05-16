@@ -12,4 +12,8 @@ def projects(request):
     return render(request, 'projects/projects.html', context)
 
 def project(request, pk):
-    return render(request, 'projects/single-project.html')
+    project = Project.objects.get(id=pk)
+    context = {
+        'project': project
+    }
+    return render(request, 'projects/single-project.html', context)

@@ -20,7 +20,7 @@
         <td>{{ project.voteTotal }}</td>
         <td>{{ project.voteRatio }}</td>
         <td>{{ project.createdAt }}</td>
-        <td><a href="">View</a></td>
+        <td><a href="{% url 'project' project.id %}">View</a></td>
     </tr>
     {% endfor %}
 </table>
