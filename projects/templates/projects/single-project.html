@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<img style="width: 500px;" src="{{ project.image.url }}" alt="{{ project.title }}">
 <h1>{{ project.title }}</h1>
 <hr>
 {% for tag in project.tags.all %}

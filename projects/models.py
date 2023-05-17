@@ -6,6 +6,7 @@ import uuid
 class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, default='default.jpg')
     liveLink = models.CharField(max_length=2000, null=True, blank=True)
     codeLink = models.CharField(max_length=2000, null=True, blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
