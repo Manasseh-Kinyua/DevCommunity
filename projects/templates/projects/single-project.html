@@ -4,9 +4,9 @@
 
 <h1>{{ project.title }}</h1>
 <hr>
-{% for tag in project.tag_set.all %}
+{% for tag in project.tags.all %}
 
-    <span>{{ tag.name }}</span>
+    <span style="border: 1px solid grey;">{{ tag.name }}</span>
 
 {% endfor%}
 <hr>
