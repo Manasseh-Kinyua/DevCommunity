@@ -6,7 +6,6 @@
 
 <table>
     <tr>
-        <th>ID</th>
         <th>PROJECT</th>
         <th>VOTE TOTAL</th>
         <th>VOTE RATIO</th>
@@ -15,12 +14,12 @@
     </tr>
     {% for project in projects %}
     <tr>
-        <td>{{ project.id }}</td>
         <td>{{ project.title }}</td>
         <td>{{ project.voteTotal }}</td>
         <td>{{ project.voteRatio }}</td>
         <td>{{ project.createdAt }}</td>
         <td><a href="{% url 'update-project' project.id %}">Edit</a></td>
+        <td><a href="{% url 'delete-project' project.id %}">Delete</a></td>
         <td><a href="{% url 'project' project.id %}">View</a></td>
     </tr>
     {% endfor %}
