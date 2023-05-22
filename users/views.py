@@ -34,7 +34,7 @@ def loginUser(request):
 
 def logoutUser(request):
     logout(request)
-    messages.error(request, "Logout was successfull.")
+    messages.info(request, "Logout was successfull.")
     return redirect('login')
 
 def registerUser(request):
@@ -80,3 +80,7 @@ def profile(request, pk):
         'otherSkills': otherSkills,
     }
     return render(request, 'users/user-profile.html', context)
+
+def userAccount(request):
+    context = {}
+    return render(request, 'users/account.html', context)
