@@ -47,3 +47,6 @@ class SkillForm(ModelForm):
 
         for name, field in self.fields.items():
             field.widget.attrs.update({'class': 'input'})
+
+        self.fields['name'].widget.attrs.update({'placeholder': 'Enter the skill'})
+        self.fields['description'].widget.attrs.update({'placeholder': 'Enter the skill description'})
