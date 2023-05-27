@@ -89,6 +89,7 @@ def editProfile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
+            messages.success(request, "Account was modified successfully")
             form.save()
 
             return redirect('account')
@@ -150,3 +151,19 @@ def editSkill(request, pk):
     }
 
     return render(request, 'users/skill_form.html', context)
+
+@login_required(login_url='login')
+def deleteSkill(request, pk):
+    profile = request.user.profile
+    skill = profile.skill_set.get(id=pk)
+
+    context = {
+        'object': skill
+    }
+
+    if request.method == 'POST':
+        skill.delete()
+        messages.success(request, "Skill was deleted successfully")
+        return redirect('account')
+
+    return render(request, 'delete_template.html', context)

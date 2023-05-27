@@ -73,4 +73,4 @@ def deleteProject(request, pk):
         messages.success(request, "Project was deleted successfully")
         return redirect('account')
 
-    return render(request, 'projects/delete_template.html', context)
+    return render(request, 'delete_template.html', context)
