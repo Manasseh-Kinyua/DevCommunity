@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.db.models import Q
 from .models import Project, Tag
-from .utils import searchProjects
+from .utils import searchProjects, paginateProjects
 from .forms import ProjectForm
 
 # Create your views here.
@@ -12,9 +12,13 @@ from .forms import ProjectForm
 def projects(request):
     projects, search_query = searchProjects(request)
 
+    custom_range, projects = paginateProjects(request, projects, 6)
+
     context = {
         'projects': projects,
-        'search_query': search_query
+        'search_query': search_query,
+        # 'paginator': paginator,
+        'custom_range': custom_range,
     }
 
     return render(request, 'projects/projects.html', context)
