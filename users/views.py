@@ -202,3 +202,7 @@ def view_message(request, pk):
         "message": message
     }
     return render(request, 'users/message.html', context)
+
+def create_message(request):
+    context = {}
+    return render(request, 'users/message_form.html', context)
