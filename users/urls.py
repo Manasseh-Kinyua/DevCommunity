@@ -14,4 +14,6 @@ urlpatterns = [
     path('add-skill/', views.addSkill, name='add-skill'),
     path('edit-skill/<str:pk>/', views.editSkill, name='edit-skill'),
     path('delete-skill/<str:pk>/', views.deleteSkill, name='delete-skill'),
+
+    path('inbox/', views.inbox, name='inbox'),
 ]
