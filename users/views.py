@@ -188,3 +188,8 @@ def inbox(request):
     }
 
     return render(request, 'users/inbox.html', context)
+
+@login_required(login_url='login')
+def view_message(request):
+    context = {}
+    return render(request, 'users/message.html', context)
