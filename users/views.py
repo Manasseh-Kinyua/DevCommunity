@@ -190,6 +190,15 @@ def inbox(request):
     return render(request, 'users/inbox.html', context)
 
 @login_required(login_url='login')
-def view_message(request):
-    context = {}
+def view_message(request, pk):
+    profile = request.user.profile
+
+    message = profile.messages.get(id=pk)
+    if message.is_read == False:
+        message.is_read = True
+        message.save()
+
+    context = {
+        "message": message
+    }
     return render(request, 'users/message.html', context)
