@@ -208,6 +208,26 @@ def create_message(request, pk):
 
     form = MessageForm()
 
+    try:
+        sender = request.user.profile
+    except:
+        sender = None
+    
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = sender
+            message.recipient = recipient
+
+            if sender:
+                message.name = sender.name
+                message.email = sender.email
+            
+            message.save()
+            messages.success(request, "Message was sent successfully")
+            return redirect('user-profile', pk=recipient.id)
+
     context = {
         "recipient": recipient,
         "form": form
